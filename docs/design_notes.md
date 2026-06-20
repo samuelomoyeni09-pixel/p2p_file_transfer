@@ -80,3 +80,10 @@ In `ChunkData.__init__`, incoming data is stored as `self._data = bytes(data)` e
 ### 19. Why random.random() Is Used in Corruption Simulation
 
 `TransferProtocol._maybe_corrupt()` uses `random.random() < self._corruption_probability` to decide whether to corrupt a chunk. `random.random()` returns a float uniformly distributed in `[0.0, 1.0)`. Comparing it to `corruption_probability` gives exactly that probability of returning True: at `corruption_probability = 0.20`, exactly 20% of calls flip a byte. The actual flip is `data[flip_idx] ^= 0xFF`, which XORs every bit of one byte with 1, inverting all 8 bits. This guarantees the byte changes value, making the corrupted chunk reliably fail `ChunkData.verify()`. The original checksum is preserved via `ChunkData._from_raw()` so the mismatch is detectable, which then triggers the retry logic in the caller.
+
+###
+13. Why @classmethod Is Used for ChunkData._from_raw()
+
+`ChunkData` provides a second constructor via `ChunkData._from_raw(file_hash, chunk_index, data, checksum)`. This is a factory class method that uses `@classmethod` and `cls._new_(cls)` to create an instance without calling `__init__`. The reason it exists is to support corruption simulation: the normal `__init__` always computes a fresh SHA-256 checksum from the data, so there is no way to create a `ChunkData` where the checksum and data intentionally disagree. `__from_raw` bypasses `__init__` to write both fields directly, allowing the tests and the protocol to simulate a corrupted chunk that will fail `verify()`.
+
+The leading underscore signals it is an internal factory not intended for user code.
