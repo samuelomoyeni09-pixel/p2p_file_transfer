@@ -40,3 +40,15 @@ Two levels of verification run independently:
 - **File level:** `TransferProtocol.finalise()` reassembles all chunks and computes `SHA-256(full_file_bytes)`, comparing it with `FileMetadata.sha256_hash`. This is the final guarantee that the reconstructed file is exactly what the seeder originally had.
 
 The two checks are complementary: chunk verification catches most corruption quickly (one retry per bad chunk), while whole-file verification is the authoritative final gate.
+
+
+---
+
+### 6. Why @property Is Used Instead of Public Attributes
+
+All internal state is stored in private backing attributes (prefixed with `_`) and exposed through read-only
+`@property` accessors. If we used public attributes like `self.data = bytes(data)`, any code outside the class could
+overwrite them - for example `chunk.data = b"tampered"` - which would silently invalidate the SHA-256 checksum that
+was computed on the original bytes. By using `@property` with no setter, the class enforces that attributes can only
+be read after construction. This is encapsulation (Week 2): hiding internal state and controlling access through a
+public interface only.
