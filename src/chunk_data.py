@@ -28,7 +28,7 @@ class ChunkData:
         self._file_hash = file_hash
         self._chunk_index = chunk_index
         self._data = bytes(data)
-        self._checksum = hashlib.sha256(self._data).hexdigest()
+                self._checksum = hashlib.sha256(self._data).hexdigest() # SHA-256 computed once at construction and stored; verify() recomputes it later
 
     # --- Factory for corruption simulation (internal use) ---
 
@@ -73,7 +73,7 @@ class ChunkData:
     # --- Integrity ---
 
     def verify(self) -> bool:
-        """Return True if the stored data matches the stored checksum."""
+        """Return True if the stored data matches the stored checksum - recomputes SHA-256 on the raw bytes and compares it to the value stored at construction time to detect any in-transit corruption."""
         return hashlib.sha256(self._data).hexdigest() == self._checksum
 
     # --- String representations ---
