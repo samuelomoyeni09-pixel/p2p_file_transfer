@@ -52,3 +52,5 @@ overwrite them - for example `chunk.data = b"tampered"` - which would silently i
 was computed on the original bytes. By using `@property` with no setter, the class enforces that attributes can only
 be read after construction. This is encapsulation (Week 2): hiding internal state and controlling access through a
 public interface only.
+
+---
