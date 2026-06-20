@@ -76,3 +76,7 @@ In `ChunkData.__init__`, incoming data is stored as `self._data = bytes(data)` e
 
 `TransferSession.reassemble()` calls `sorted(self._received_chunks)` on the dictionary keys before building the final byte string. This is essential because chunks may not arrive in order - a corrupted chunk 3 might be retried and received after chunks 5, 6, and 7 have already arrived. Dictionary insertion order in Python 3.7+ is preserved (not sorted), so without `sorted()` the byte string would be assembled in arrival order rather than the correct logical index order, producing a scrambled file even though every individual chunk passed its SHA-256 integrity check.
 `sorted()` guarantees correctness regardless of the order chunks happen to arrive during the transfer.
+###
+6. Why @property Is Used Instead of Public Attributes
+
+All internal state is stored in private backing attributes (prefixed with `_`) and exposed through read-only `@property` accessors. If we used public attributes like `self.data = bytes(data)`, any code outside the class could overwrite them – for example `chunk.data = b"tampered"` – which would silently invalidate the SHA-256 checksum that was computed on the original bytes. By using `@property` with no setter, the class enforces that attributes can only be read after construction. This is encapsulation (Week 2): hiding internal state and controlling access through a public interface only.
