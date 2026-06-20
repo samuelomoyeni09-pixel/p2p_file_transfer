@@ -11,7 +11,7 @@ This project implements a Python OOP simulation of a simplified Peer-to-Peer (P2
 | Full Name | Matric Number | GitHub Username |
 |---|---|---|
 | Olayinka Moyinoluwa | CPE/2023/1086 | @oakin4809-droid |
-| _(Member 2 — fill in)_ | _(matric)_ | _(github)_ |
+| Olayiwola Idowu Lukman | CPE/2023/1087 | @Guruteck |
 | _(Member 3 — fill in)_ | _(matric)_ | _(github)_ |
 | _(Member 4 — fill in)_ | _(matric)_ | _(github)_ |
 | _(Member 5 — fill in)_ | _(matric)_ | _(github)_ |
