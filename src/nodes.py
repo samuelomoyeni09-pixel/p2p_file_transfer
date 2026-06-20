@@ -92,7 +92,7 @@ class RateLimiterMixin:
         return (self._bytes_this_second + byte_count) <= self._max_bw
 
     def record_sent(self, byte_count: int) -> None:
-        """Increment the bandwidth counter after sending byte_count bytes."""
+    """Increment the running bandwidth counter after sending byte_count bytes so that subsequent can_send() calls accurately reflect how much capacity remains in the current simulated second."""
         self._bytes_this_second += byte_count
 
     def reset_bandwidth(self) -> None:
