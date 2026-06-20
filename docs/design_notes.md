@@ -69,3 +69,7 @@ The `@functools.total_ordering` decorator reduces this duplication. We only defi
 This follows the DRY (Don't Repeat Yourself) principle and still provides full support for operations such as `sorted()`, `min()`, and `max()`.
 
 
+### 15. Why sorted() Is Used in reassemble()
+
+`TransferSession.reassemble()` calls `sorted(self._received_chunks)` on the dictionary keys before building the final byte string. This is essential because chunks may not arrive in order - a corrupted chunk 3 might be retried and received after chunks 5, 6, and 7 have already arrived. Dictionary insertion order in Python 3.7+ is preserved (not sorted), so without `sorted()` the byte string would be assembled in arrival order rather than the correct logical index order, producing a scrambled file even though every individual chunk passed its SHA-256 integrity check.
+`sorted()` guarantees correctness regardless of the order chunks happen to arrive during the transfer.
