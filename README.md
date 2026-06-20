@@ -12,12 +12,12 @@ This project implements a Python OOP simulation of a simplified Peer-to-Peer (P2
 |---|---|---|
 | Olayinka Moyinoluwa | CPE/2023/1086 | @oakin4809-droid |
 | Olayiwola Idowu Lukman | CPE/2023/1087 | @Guruteck |
-| _(Member 3 — fill in)_ | _(matric)_ | _(github)_ |
+| Olokungboye Ayomitide Daniel| cpe/2023/1088 | @D-ack|
 | Olusola Promise Nifemi | CPE/2023/1089 |@Promise12350|
 | _(Member 5 — fill in)_ | _(matric)_ | _(github)_ |
 | Oluwada-ire Samuel Boluwatife | CPE/2023/1091 | Samueldaire |
 | Oluwadare Gideon  | Cpe/2023/1092 | blvck804 |
-| Omolola Fathiu Adedamola|CPE/2023/1093|omololaadedamola231093-tech|
+| _(Member 8 — fill in)_ | _(matric)_ | _(github)_ |
 | _(Member 9 — fill in)_ | _(matric)_ | _(github)_ |
 | Omoniyi abdul-muiz opeyemi  | CPE/2023/1094 | Softwork-gif |
 | Omoyeni Samuel Ayomide | CPE/2023/1096 | samuelomoyeni09-pixel |
