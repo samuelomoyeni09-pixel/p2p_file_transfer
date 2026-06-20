@@ -18,7 +18,7 @@ class TransferSession:
             provider:      Node that is supplying the file chunks initially.
             file_metadata: FileMetadata object describing the target file.
         """
-        self._session_id: str = str(uuid.uuid4())
+        self._session_id: str = str(uuid.uuid4())  # random 128-bit ID; unique per session without needing a shared counter at the end.
         self._requester = requester
         self._provider = provider
         self._file_metadata = file_metadata
