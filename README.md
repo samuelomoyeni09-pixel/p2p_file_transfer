@@ -14,7 +14,7 @@ This project implements a Python OOP simulation of a simplified Peer-to-Peer (P2
 | Olayiwola Idowu Lukman | CPE/2023/1087 | @Guruteck |
 | Olokungboye Ayomitide | CPE/2023/1088 |  |
 | Olusola Promise Nifemi | CPE/2023/1089 |@Promise12350|
-| _(Member 5 — fill in)_ | _(matric)_ | _(github)_ |
+| Olusola Samuel Tomiwa | CPE/2023/1090 |  |
 | Oluwada-ire Samuel Boluwatife | CPE/2023/1091 | Samueldaire |
 | Oluwadare Gideon  | Cpe/2023/1092 | blvck804 |
 | _(Member 8 — fill in)_ | _(matric)_ | _(github)_ |

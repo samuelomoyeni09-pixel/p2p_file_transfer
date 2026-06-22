@@ -30,7 +30,6 @@ class ChunkData:
         self._data = bytes(data)
         self._checksum = hashlib.sha256(self._data).hexdigest()
 
-
     
     # --- Factory for corruption simulation (internal use) ---
 
